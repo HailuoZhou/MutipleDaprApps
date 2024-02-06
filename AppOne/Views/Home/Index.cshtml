@@ -1,0 +1,44 @@
+﻿@using AppOne.Models.View
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model WeatherForecastViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<hr/>
+<div class="row">
+    @if (Model.WeatherForecast.Count() ==0)
+    {
+        <text>No weather forecast</text>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr class="columnHeader">
+                    <th></th>
+                    <th>Date</th>
+                    <th>TemperatureC</th>
+                    <th>TemperatureF</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var value in Model.WeatherForecast)
+                {
+                  <tr>
+                  <td></td>
+                  <td>@value.Date.ToShortDateString()</td>
+                  <td>@value.TemperatureC.ToString() </td>
+                  <td>@value.TemperatureF.ToString()</td>
+                  <td>@value.Summary</td>
+                 </tr>
+                }
+            </tbody>
+        </table>
+        
+    }
+</div>
