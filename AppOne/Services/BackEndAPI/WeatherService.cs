@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace AppOne.Services.BackEndAPI
 {
-    // type http client
+
     public class WeatherService : IWeatherService
     {
         private readonly HttpClient _client;

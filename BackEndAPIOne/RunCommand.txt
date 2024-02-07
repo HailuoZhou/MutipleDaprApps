@@ -1,0 +1,4 @@
+dapr run --app-id appone--app-port 5150 --dapr-http-port 3500 dotnet run
+dapr run --app-id backendapione --app-port 5288 --dapr-http-port 3501 dotnet run
+
+http://localhost:5150
