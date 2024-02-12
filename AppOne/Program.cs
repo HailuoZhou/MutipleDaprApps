@@ -1,4 +1,6 @@
-using AppOne.Services.BackEndAPI;
+using AppOne.Services.BackEndAPIOne;
+using AppOne.Services.BackEndAPITwo;
+using AppOne.Services.StateStore;
 using Dapr.Client;
 using System.Diagnostics;
 
@@ -18,20 +20,24 @@ builder.Services.AddControllersWithViews();
 //       c.BaseAddress = new Uri(sp.GetService<IConfiguration>()?["ApiConfigs:WeatherService:Uri"] ?? throw new InvalidOperationException("Missing config")));
 //### 
 
-#if DEBUG
-Debugger.Launch();
-#endif
+//#if DEBUG
+//Debugger.Launch();
+//#endif
 
 //Console.WriteLine("USING DAPR");
 
 
 var daprPort = Environment.GetEnvironmentVariable("DAPR_HTTP_PORT");
+
+
 //builder.Services.AddHttpClient<IWeatherService, WeatherService>(c =>
 //c.BaseAddress = new Uri($"http://localhost:{daprPort}/v1.0/invoke/BackEndAPIOne/method/"));
 
 builder.Services.AddDaprClient();
 builder.Services.AddSingleton<IWeatherService>(sc =>
        new WeatherService(DaprClient.CreateInvokeHttpClient("BackEndAPIOne")));
+builder.Services.AddScoped<IWeatherPublishService, WeatherPublishService>();
+builder.Services.AddScoped<IStateStoreWeatherService, DaprSateStoreWeather>();
 
 var app = builder.Build();
 

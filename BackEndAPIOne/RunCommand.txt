@@ -1,4 +1,6 @@
-dapr run --app-id appone--app-port 5150 --dapr-http-port 3500 dotnet run
-dapr run --app-id backendapione --app-port 5288 --dapr-http-port 3501 dotnet run
+dapr run --app-id appone --app-port 5150 --dapr-http-port 3500  --resources-path ../dapr/components dotnet run
+dapr run --app-id backendapione --app-port 5288 --dapr-http-port 3501 --resources-path ../dapr/components dotnet run
+dapr run --app-id backendapitwo --app-port 5218 --dapr-http-port 3502 --resources-path ../dapr/components dotnet run
 
 http://localhost:5150
+

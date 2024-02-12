@@ -1,6 +1,6 @@
 ﻿using AppOne.Models.Api;
 
-namespace AppOne.Services.BackEndAPI
+namespace AppOne.Services.BackEndAPIOne
 {
     public interface IWeatherService
     {
